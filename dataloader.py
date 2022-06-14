@@ -10,14 +10,16 @@ import torch as th
 import time
 
 class TweetLoader(Dataset):
-    def __init__(self):
+    def __init__(self, path, transformer):
        # CBeaune.txt  CZacharopoulou.txt  dataloader.py  franckriester.txt  JLMelenchon.txt  MinColonna.txt 
-       self.data = pd.read_csv('train_clean.tsv', sep='\t')
+       self.data = pd.read_csv(path, sep='\t')
+       if transformer == 'TODO':
+        self.tokenizer = TODO
 
     def __len__(self):
         return len(self.data)
 
     def __getitem__(self, idx):
-        text = data[idx]['tweet']
+        text = self.tokenizer(data[idx]['tweet'])
         label = data[idx]['label']
         return {'tweet':text, 'label':label}
