@@ -19,6 +19,6 @@ class TweetLoader(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        text = self.tokenizer(data[idx]['tweet'])
-        label = data[idx]['label']
+        text = self.tokenizer(self.data[idx]['tweet'])
+        label = self.data[idx]['label']
         return {'tweet':text, 'label':label}
