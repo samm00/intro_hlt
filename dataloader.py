@@ -1,11 +1,6 @@
 from torch.utils.data import Dataset
-import json
-import pickle as pkl
-from PIL import Image
-import soundfile as sf
 import numpy as np
 from CLIP import clip
-from transformers import Wav2Vec2Processor, HubertModel
 import torch as th
 import time
 
