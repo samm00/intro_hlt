@@ -11,10 +11,10 @@ import time
 
 class TweetLoader(Dataset):
     def __init__(self, path, transformer):
-       # CBeaune.txt  CZacharopoulou.txt  dataloader.py  franckriester.txt  JLMelenchon.txt  MinColonna.txt 
-       self.data = pd.read_csv(path, sep='\t')
-       if transformer == 'TODO':
-        self.tokenizer = TODO
+        # CBeaune.txt  CZacharopoulou.txt  dataloader.py  franckriester.txt  JLMelenchon.txt  MinColonna.txt 
+        self.data = pd.read_csv(path, sep='\t')
+        if transformer == 'flaubert':
+            self.tokenizer = FlaubertTokenizer.from_pretrained('flaubert/flaubert_large_cased', do_lowercase=False)
 
     def __len__(self):
         return len(self.data)
