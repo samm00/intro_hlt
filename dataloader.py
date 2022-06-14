@@ -1,9 +1,8 @@
 from torch.utils.data import Dataset
 import numpy as np
-from CLIP import clip
 import torch as th
 import time
-
+from transformers import FlaubertForSequenceClassification, FlaubertTokenizer
 import pandas as pd
 
 class TweetLoader(Dataset):
