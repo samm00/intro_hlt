@@ -1,5 +1,5 @@
 # Minimal training procedure for a pytorch model
-  
+
 # Constants/hyperparameters
 BATCH_SIZE = 256
 LEARNING_RATE = .0001
@@ -16,6 +16,8 @@ from torch.utils.data import DataLoader
 from dataloader import TweetLoader
 from tqdm import tqdm
 
+from torch.nn import CrossEntropyLoss
+
 # Step 1: Create an instance of the model
 from model import Model
 model = Model(transformer)
@@ -28,7 +30,8 @@ train_dataset = DataLoader(TweetLoader('train.tsv',transformer),batch_size=BATCH
 val_dataset = DataLoader(TweetLoader('val.tsv',transformer),batch_size=BATCH_SIZE,shuffle=True,num_workers=workers,drop_last=True)
 
 # Step 3: Create instances of loss function and optimizer
-loss_op = TODO: Cross Entropy
+
+loss_op = CrossEntropyLoss()
 evaluate = TODO: Accuracy
 opt = th.optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
@@ -63,4 +66,3 @@ for e in range(EPOCHS):
     evaluate(model,val_dataset)
     if chkpt_path:
         th.save(model.state_dict(), chkpt_path)
-                                                                                                                                                    65,47         B
